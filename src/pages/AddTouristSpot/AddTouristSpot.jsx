@@ -16,7 +16,7 @@ const AddTouristSpot = () => {
                 <input
                   type="text"
                   name="image"
-                  placeholder="email url"
+                  placeholder="image url"
                   className="input input-bordered w-full"
                   required
                 />
