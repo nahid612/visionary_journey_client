@@ -8,6 +8,9 @@ import {
 import Root from './Root';
 import Home from './pages/Home';
 import NotFound from './component/NotFound';
+import AllTouristSpot from './pages/AllTouristSpot/AllTouristSpot';
+import AddTouristSpot from './pages/AddTouristSpot/AddTouristSpot';
+import MyAddList from './pages/MyAddList/MyAddList';
 
 
 const router = createBrowserRouter([
@@ -19,7 +22,19 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-      }
+      },
+      {
+        path: "/allTouristspot",
+        element: <AllTouristSpot></AllTouristSpot>,
+      },
+      {
+        path: "/addTouristSpot",
+        element: <AddTouristSpot></AddTouristSpot>,
+      },
+      {
+        path: "/myAddList",
+        element:<MyAddList></MyAddList>,
+      },
     ]
   },
 ]);

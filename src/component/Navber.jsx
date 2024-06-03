@@ -16,60 +16,18 @@ const Navber = () => {
           Home
         </NavLink>
       </li>
+      
       <li>
-        <details className="dropdown dropdown-hover">
-          <summary>
-            <NavLink
-              className={({ isActive }) =>
-                isActive
-                  ? " text-green-500 font-bold border border-green-600  dropdown dropdown-hover"
-                  : "font-medium"
-              }
-              to="/categories"
-            >
-              Categories
-            </NavLink>
-          </summary>
-          <ul className="p-2">
-            <li>
-              <NavLink
-                className={({ isActive }) =>
-                  isActive
-                    ? "text-green-500 font-bold border border-green-600"
-                    : "font-medium"
-                }
-                to="/categories/appertment"
-              >
-                Appertment
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                className={({ isActive }) =>
-                  isActive
-                    ? "text-green-500 font-bold border border-green-600"
-                    : " font-medium"
-                }
-                to="/family"
-              >
-                Family Room
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                className={({ isActive }) =>
-                  isActive
-                    ? "text-green-500 font-bold border border-green-600"
-                    : " font-medium"
-                }
-                to="/categories/student"
-              >
-                Student Room
-              </NavLink>
-            </li>
-            
-          </ul>
-        </details>
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? "text-green-500 font-bold border border-green-600"
+              : "font-medium"
+          }
+          to="/allTouristspot"
+        >
+          All Tourist Spots
+        </NavLink>
       </li>
       <li>
         <NavLink
@@ -78,9 +36,21 @@ const Navber = () => {
               ? "text-green-500 font-bold border border-green-600"
               : "font-medium"
           }
-          to="/updateprofile"
+          to="/addTouristSpot"
         >
-          Update User
+          Add Tourist Spots
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? "text-green-500 font-bold border border-green-600"
+              : "font-medium"
+          }
+          to="/myAddList"
+        >
+          My Add List
         </NavLink>
       </li>
     </>
@@ -90,7 +60,7 @@ const Navber = () => {
 //   const {signOut, user} = useAuthContext()
 
   return (
-    <div className="navbar bg-base-100">
+    <div className=" mt-2 navbar bg-base-100">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -116,7 +86,7 @@ const Navber = () => {
             {navlinks}
           </ul>
         </div>
-        <a className="btn btn-ghost lg:text-2xl md:text-xl text-lg font-bold">PeaceFul-Department</a>
+        <a className="lg:text-3xl md:text-xl text-lg font-bold poppins-bold">Visionary_Journey</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navlinks}</ul>
