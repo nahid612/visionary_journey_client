@@ -1,50 +1,33 @@
 import { useContext } from "react";
-import { Link, } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
 // import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 // import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Register = () => {
+  const { createUser } = useContext(AuthContext);
+  // console.log(createUser);
 
-    const {createUser} = useContext(AuthContext)
-    console.log(createUser)
+  const handleRegister = (e) => {
+    e.preventDefault();
+    // console.log(e.currentTarget);
+    const form = new FormData(e.currentTarget);
+    const name = form.get("name");
+    const img = form.get("img");
+    const email = form.get("email");
+    const password = form.get("password");
+    console.log(name, img, email, password);
 
-    const handleRegister = (e) =>{
-      e.preventDefault();
-      // console.log(e.currentTarget);
-      const form = new FormData(e.currentTarget);
-      const name = form.get("name");
-      const img = form.get("img");
-      const email = form.get("email");
-      const password = form.get("password");
-      console.log(name, img, email, password);
-  
-     
-  
-      // create user
-      createUser(email, password)
-        .then((result) => {
-          console.log(result.user)
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-  
-
-
-        // e.preventDefault()
-        // const name = e.target.name.value;
-        // const photo = e.target.photo.value;
-        // const email = e.target.email.value;
-        // const password = e.target.password.value;
-        // console.log(name, photo, email, password)
-
-        // const allInfo = {name, photo, email, password}
-        // console.log(allInfo)
-
-      
-    }
+    // create user
+    createUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div className="hero min-h-screen bg-base-200">
