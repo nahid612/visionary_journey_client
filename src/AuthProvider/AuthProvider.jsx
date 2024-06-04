@@ -1,4 +1,4 @@
-import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { FacebookAuthProvider, GithubAuthProvider, GoogleAuthProvider, TwitterAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "../firebase/firebase.config";
 
@@ -7,6 +7,8 @@ export const AuthContext = createContext(null)
 // social auth Provider
 const googleProvider = new GoogleAuthProvider()
 const githubProvider = new GithubAuthProvider()
+const facebookProvider = new FacebookAuthProvider()
+const twitterProvider = new TwitterAuthProvider()
 
 
 const AuthProvider = ({children}) => {
@@ -38,9 +40,19 @@ const AuthProvider = ({children}) => {
         return signInWithPopup(auth, googleProvider)
     }
 
-    // GITHUB login
+    // github login
     const githubLogin = () =>{
         return signInWithPopup(auth, githubProvider)
+    }
+
+    // facebook login
+    const facebookLogin = () =>{
+        return signInWithPopup(auth, facebookProvider)
+    }
+
+    // twitter login
+    const twitterLogin = () =>{
+        return signInWithPopup(auth, twitterProvider)
     }
 
     // logOut
@@ -54,6 +66,8 @@ const AuthProvider = ({children}) => {
         signInUser,
         googleLogin,
         githubLogin,
+        facebookLogin,
+        twitterLogin,
         logOut,
         user,
     }

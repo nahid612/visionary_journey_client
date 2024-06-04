@@ -1,12 +1,12 @@
 import useAuth from "../Hook/useAuth";
-import { FaGoogle, FaGithub } from "react-icons/fa";
+import { FaGoogle, FaGithub,FaTwitter  } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 
 
 const SocialLogin = () => {
-  const { googleLogin, githubLogin } = useAuth();
+  const { googleLogin, githubLogin,facebookLogin, twitterLogin } = useAuth();
   return (
-    <div className="mx-8 pb-5 flex justify-between">
+    <div className="mx-7 pb-5 grid  grid-cols-2 gap-5 justify-between">
       <button
         onClick={() => googleLogin()}
         className="btn btn-outline btn-sm btn-primary"
@@ -16,8 +16,9 @@ const SocialLogin = () => {
         </span>
         Google
       </button>
+      {/* ---------- */}
       <button
-        onClick={() => googleLogin()}
+        onClick={() => githubLogin()}
         className="btn btn-outline btn-sm btn-primary"
       >
         <span>
@@ -25,14 +26,25 @@ const SocialLogin = () => {
         </span>
         Github
       </button>
+      {/* --------------- */}
       <button
-        onClick={() => githubLogin()}
+        onClick={() => facebookLogin()}
         className="btn btn-outline btn-sm btn-primary"
       >
         <span>
           <FaFacebook/>
         </span>
         Facebook
+      </button>
+      {/* ------------- */}
+      <button
+        onClick={() => twitterLogin()}
+        className="btn btn-outline btn-sm btn-primary"
+      >
+        <span>
+        <FaTwitter />
+        </span>
+        Twitter
       </button>
     </div>
   );
