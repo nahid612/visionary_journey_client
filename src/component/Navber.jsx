@@ -1,4 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
+import useAuth from "../Hook/useAuth";
 // import useAuthContext from "../Hook/useAuthContext";
 
 const Navber = () => {
@@ -16,7 +17,7 @@ const Navber = () => {
           Home
         </NavLink>
       </li>
-      
+
       <li>
         <NavLink
           className={({ isActive }) =>
@@ -57,7 +58,8 @@ const Navber = () => {
   );
 
   // signout
-//   const {signOut, user} = useAuthContext()
+  const { logOut, user } = useAuth();
+  console.log(user);
 
   return (
     <div className=" mt-2 navbar bg-base-100">
@@ -86,7 +88,9 @@ const Navber = () => {
             {navlinks}
           </ul>
         </div>
-        <a className="lg:text-3xl md:text-xl text-lg font-bold poppins-bold">Visionary_Journey</a>
+        <a className="lg:text-3xl md:text-xl text-lg font-bold poppins-bold">
+          Visionary_Journey
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navlinks}</ul>
@@ -94,28 +98,50 @@ const Navber = () => {
 
       {/* ---------------- */}
       <div className="navbar-end">
-        {
-        //   user?.email ? <div className="dropdown dropdown-end">
-        //     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-        //       <div className="w-10 rounded-full">
-        //         <img src={user?.photoURL || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" } alt="" />
-        //       </div>
-        //     </label>
-        //     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-auto">
-        //       <li>
-        //         <p className="text-xl text-center font-semibold my-1">{user?.displayName || 'user name Undefined'}</p>
-        //       </li>
-        //       <li>
-        //         <p className="text-center items-center">{user.email}</p>
-        //       </li>
-        //       <li>
-        //         <button onClick={signOut} className="btn btn-primary btn-sm my-2">LogOut</button>
-        //       </li>  
-        //     </ul>
-        //   </div>
-        //   :
-          <Link to='/login'>
-          <a className="btn">Login</a>
+        {user?.email 
+        ? 
+          <div className="dropdown dropdown-end">
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full">
+                {/* <img
+                  src={
+                    user?.photoURL ||
+                    "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                  }
+                  alt=""
+                /> */}
+                <img
+                  src="https://i.ibb.co/gr7SHJM/rayyu-maldives-x-Ps-FXsb-XJRg-unsplash.jpg"
+                  alt=""
+                />
+              </div>
+            </label>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-auto"
+            >
+              <li>
+                {/* <p className="text-xl text-center font-semibold my-1">
+                  {user?.displayName || "user name Undefined"}
+                </p> */}
+                <p className="text-xl text-center font-semibold my-1">Nahid</p>
+              </li>
+              {/* <li>
+                <p className="text-center items-center">{user.email}</p>
+              </li> */}
+              <li>
+                <button
+                  onClick={logOut}
+                  className="btn btn-primary btn-sm my-2"
+                >
+                  LogOut
+                </button>
+              </li>
+            </ul>
+          </div>
+        : 
+          <Link to="/login">
+            <button className="btn btn-primary">Login</button>
           </Link>
         }
       </div>
