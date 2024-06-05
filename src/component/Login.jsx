@@ -2,13 +2,20 @@
 // import {  useState } from "react";
 // import { Link, useLocation, useNavigate } from "react-router-dom";
 // import { FaRegEye , FaRegEyeSlash } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../Hook/useAuth";
 import SocialLogin from "./SocialLogin";
 
 const Login = () => {
   const { signInUser } = useAuth();
   //     const [showPassword, setShowPassword] = useState(false)
+
+   // navigate
+   const navigate = useNavigate()
+   const location = useLocation()
+   const from = location?.state || '/'
+   // console.log(location)
+
 
   // sign in user
   const handleSignIn = (e) => {
@@ -21,9 +28,11 @@ const Login = () => {
     console.log(email, password);
 
     signInUser(email, password)
-      .then((result) => {
-        console.log(result.user);
-      })
+    .then(result =>{
+      if(result.user){
+        navigate(from)
+      }
+    })
       .catch((error) => {
         console.log(error);
       });

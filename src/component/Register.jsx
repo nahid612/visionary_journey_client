@@ -1,13 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../Hook/useAuth";
 
 // import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 // import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Register = () => {
-  const { createUser } = useAuth();
+  const { createUser, updateUserProfile } = useAuth();
   // console.log(createUser);
 
+   // navigate
+   const navigate = useNavigate()
+   const location = useLocation()
+   const from = location?.state || '/'
+   // console.log(location)
+
+  //  handle Register
   const handleRegister = (e) => {
     e.preventDefault();
     // console.log(e.currentTarget);
@@ -18,11 +25,15 @@ const Register = () => {
     const password = form.get("password");
     console.log(name, img, email, password);
 
-    // create user
-    createUser(email, password)
-      .then((result) => {
-        console.log(result.user);
+    // create user & update profile
+    createUser(email, password, img, name )
+    .then(() =>{
+      updateUserProfile(name, img)
+      .then(() =>{
+          navigate(from)
       })
+     
+    })
       .catch((error) => {
         console.log(error);
       });

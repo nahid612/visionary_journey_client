@@ -98,22 +98,19 @@ const Navber = () => {
 
       {/* ---------------- */}
       <div className="navbar-end">
-        {user?.displayName
+        {user
         ? 
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
-                {/* <img
+                <img
                   src={
                     user?.photoURL ||
                     "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
                   }
                   alt=""
-                /> */}
-                <img
-                  src="https://i.ibb.co/gr7SHJM/rayyu-maldives-x-Ps-FXsb-XJRg-unsplash.jpg"
-                  alt=""
                 />
+                
               </div>
             </label>
             <ul
@@ -121,10 +118,9 @@ const Navber = () => {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-auto"
             >
               <li>
-                {/* <p className="text-xl text-center font-semibold my-1">
+                <p className="text-xl text-center font-semibold my-1">
                   {user?.displayName || "user name Undefined"}
-                </p> */}
-                <p className="text-xl text-center font-semibold my-1">Nahid</p>
+                </p>
               </li>
               {/* <li>
                 <p className="text-center items-center">{user.email}</p>
