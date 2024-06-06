@@ -41,22 +41,17 @@ const AuthProvider = ({ children }) => {
       displayName: name,
       photoURL: img,
     })
-      .then(() => {
-        // Profile updated!
-        // ...
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+     
   };
 
   // observer
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        setLoading(false);
         setUser(user);
+        setLoading(false);
       }
+      setLoading(false)
     });
     return () => unsubscribe();
   }, []);

@@ -1,23 +1,24 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../Hook/useAuth";
+import { useState } from "react";
 
-// import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
-// import { AuthContext } from "../AuthProvider/AuthProvider";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 
 const Register = () => {
   const { createUser, updateUserProfile } = useAuth();
-  // console.log(createUser);
+  const [registerError, setRegisterError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
-   // navigate
-   const navigate = useNavigate()
-   const location = useLocation()
-   const from = location?.state || '/'
-   // console.log(location)
+  // navigate
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state || "/";
+  console.log(location)
 
   //  handle Register
   const handleRegister = (e) => {
     e.preventDefault();
-    // console.log(e.currentTarget);
+    console.log(e.currentTarget);
     const form = new FormData(e.currentTarget);
     const name = form.get("name");
     const img = form.get("img");
@@ -25,18 +26,33 @@ const Register = () => {
     const password = form.get("password");
     console.log(name, img, email, password);
 
+     // password checked
+     if (password.length < 6) {
+      setRegisterError("Password should be at least 6 characters");
+      return;
+    } else if (!/[A-Z]/.test(password)) {
+      setRegisterError("give me a strong password");
+      return;
+    }
+
+    
+    // reset massage and success
+    setRegisterError("");
+
     // create user & update profile
-    createUser(email, password, img, name )
-    .then(() =>{
-      updateUserProfile(name, img)
-      .then(() =>{
-          navigate(from)
+    createUser(email, password, img, name)
+      .then(() => {
+        updateUserProfile(name, img).then(() => {
+          navigate(from);
+        });
       })
-     
-    })
       .catch((error) => {
         console.log(error);
+        setRegisterError(error.message);
       });
+
+   
+
   };
 
   return (
@@ -88,12 +104,20 @@ const Register = () => {
               </label>
               <div className="flex text-center items-center">
                 <input
-                  type="text"
+                  type={showPassword ? "text" : "password"}
                   name="password"
                   placeholder="Enter a Password"
                   className="input input-bordered w-full"
                   required
                 />
+                <span
+                  className=" end-10 absolute"
+                  onClick={() => {
+                    setShowPassword(!showPassword);
+                  }}
+                >
+                  {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
+                </span>
               </div>
             </div>
             <div className="form-control mt-6">
@@ -101,6 +125,7 @@ const Register = () => {
             </div>
           </form>
           {/* error showing on display */}
+          {registerError && <p className=" text-red-700">{registerError}</p>}
           <p className=" text-center mt-4">
             Already have an account{" "}
             <Link

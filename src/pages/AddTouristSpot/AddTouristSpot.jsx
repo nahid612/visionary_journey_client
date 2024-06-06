@@ -1,4 +1,50 @@
+import Swal from "sweetalert2";
+import useAuth from "../../Hook/useAuth";
+
 const AddTouristSpot = () => {
+
+  const {user } = useAuth();
+  
+  const handleAddTouristSpot = (e) =>{
+    e.preventDefault()
+    const image = e.target.image.value
+    const touristSpot = e.target.touristSpot.value
+    const countryName = e.target.countryName.value
+    const location = e.target.location.value
+    const description = e.target.description.value
+    const cost = e.target.cost.value
+    const season = e.target.season.value
+    const travelTime = e.target.travelTime.value
+    const visitor = e.target.image.value
+    const email = user.email
+  
+    const info = {image,touristSpot,countryName, location,description, cost, season,travelTime, visitor, email}
+    console.log(info)
+
+    // send to the server
+    fetch('http://localhost:5000/addTouristSpot',{
+      method: 'POST',
+      headers:{
+        'content-type': 'application/json'
+        },
+      body: JSON.stringify(info)
+    })
+      .then(res => res.json())
+      .then(data =>{
+        console.log(data)
+        if(data.insertedId){
+          Swal.fire({
+            title: 'Success!',
+            text: 'User add successfully',
+            icon: 'success',
+            confirmButtonText: 'Ok'
+          })
+        }
+      })
+
+    console.log(info)
+  }
+
   return (
     <div>
       <div className=" mt-10">
@@ -6,7 +52,7 @@ const AddTouristSpot = () => {
           <h1 className="text-5xl my-3 font-bold">Add Tourist Spot!</h1>
         </div>
         <div className=" w-full shadow-2xl bg-base-100">
-          <form >
+          <form onSubmit={handleAddTouristSpot}>
             <div className=" lg:grid lg:grid-cols-2 gap-5">
               {/* --------------- */}
               <div className="form-control">
@@ -54,7 +100,7 @@ const AddTouristSpot = () => {
                 </label>
                 <input
                   type="text"
-                  name="Location"
+                  name="location"
                   placeholder="location"
                   className="input input-bordered w-full"
                   required
