@@ -15,7 +15,7 @@ const AddTouristSpot = () => {
     const cost = e.target.cost.value
     const season = e.target.season.value
     const travelTime = e.target.travelTime.value
-    const visitor = e.target.image.value
+    const visitor = e.target.visitor.value
     const email = user.email
   
     const info = {image,touristSpot,countryName, location,description, cost, season,travelTime, visitor, email}
@@ -173,7 +173,7 @@ const AddTouristSpot = () => {
               </div>
             </div>
             <div className="form-control mt-6">
-                <button className="btn btn-primary">Login</button>
+                <button className="btn btn-primary">Submit</button>
               </div>
           </form>
         </div>
