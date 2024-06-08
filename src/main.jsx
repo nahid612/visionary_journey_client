@@ -13,6 +13,7 @@ import Register from "./component/Register";
 import Login from "./component/Login";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import UpdatePlace from "./pages/AllTouristSpot/UpdatePlace";
+import ViewDetails from "./pages/AllTouristSpot/ViewDetails";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -59,6 +60,12 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        path: '/viewDetails/:id',
+        element: <PrivateRoute>
+          <ViewDetails></ViewDetails>
+        </PrivateRoute>,
       },
     ],
   },

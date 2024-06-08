@@ -66,8 +66,8 @@ const MyAddList = () => {
           <div className="card-body rounded-xl bg-gray-100">
         <h2 className=" font-bold text-xl"><span className="font-semibold text-lg">Location: </span>{p.location}</h2>
         <div className="flex gap-10 justify-between ">
-          <p><span className="font-semibold">Average Cost: </span>{p.cost}</p>
-          <p><span className="font-semibold">Travel Time: </span>{p.travelTime}</p>
+          <p><span className="font-semibold">Average Cost: </span>{p.cost} tk</p>
+          <p><span className="font-semibold">Travel Time: </span>{p.travelTime} day</p>
         </div>
         <div className="flex flex-shrink-0 gap-10 end-1 justify-between ">
           <p><span className=" font-semibold">Season: </span> {p.season}</p>
