@@ -9,7 +9,7 @@ const MyAddList = () => {
   const [clean, setClean] = useState(false);
   // console.log(user)
   useEffect(() => {
-    fetch(`https://nahid-seven.vercel.app/myAddList/${user?.email}`)
+    fetch(`https://visionary-five.vercel.app/myAddList/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setPlace(data);
@@ -34,7 +34,7 @@ const MyAddList = () => {
         //     text: "Your file has been deleted.",
         //     icon: "success"
         //   });
-        fetch(`https://nahid-seven.vercel.app/delatePlace/${id}`,{
+        fetch(`https://visionary-five.vercel.app/delatePlace/${id}`,{
             method: 'DELETE'
         })
           .then((res) => res.json())

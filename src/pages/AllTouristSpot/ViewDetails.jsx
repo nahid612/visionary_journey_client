@@ -7,7 +7,7 @@ const ViewDetails = () => {
   const [place, setPlace] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:5000/viewDetails/${id}`)
+    fetch(`https://visionary-five.vercel.app/viewDetails/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setPlace(data);
@@ -15,7 +15,7 @@ const ViewDetails = () => {
       });
   }, [id]);
 
-  const { image, touristSpot, cost, season, travelTime, visitor } = place;
+  const { image, touristSpot, cost, season, travelTime, visitor,description, countryName} = place;
 
   return (
     <div>
@@ -28,6 +28,14 @@ const ViewDetails = () => {
             <span className="font-semibold text-lg">Location: </span>
             {touristSpot}
           </h2>
+          <h2 className=" font-bold text-xl">
+            <span className="font-semibold text-lg">Country Name: </span>
+            {countryName}
+          </h2>
+          <p>
+              <span className="font-semibold">Description: </span>
+              {description}
+            </p>
           <div className="flex gap-10 justify-between ">
             <p>
               <span className="font-semibold">Average Cost: </span>

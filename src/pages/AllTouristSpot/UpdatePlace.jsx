@@ -9,7 +9,7 @@ const UpdatePlace = () => {
     const [place, setPlace] = useState({})
 
     useEffect(() =>{
-        fetch(`https://nahid-seven.vercel.app/singlePlace/${id}`)
+        fetch(`https://visionary-five.vercel.app/singlePlace/${id}`)
         .then(res => res.json())
         .then(data =>{
             setPlace(data)
@@ -37,7 +37,7 @@ const UpdatePlace = () => {
     console.log(info)
 
      // send to the server
-     fetch(`https://nahid-seven.vercel.app/updatePlace/${id}`,{
+     fetch(`https://visionary-five.vercel.app/updatePlace/${id}`,{
         method: 'PUT',
         headers:{
           'content-type': 'application/json'

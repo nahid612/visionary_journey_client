@@ -27,7 +27,7 @@ const router = createBrowserRouter([
       {
         path: "/allTouristspot",
         element: <AllTouristSpot></AllTouristSpot>,
-        loader: () => fetch("https://nahid-seven.vercel.app/allTouristspot"),
+        loader: () => fetch("https://visionary-five.vercel.app/allTouristspot"),
       },
       {
         path: "/addTouristSpot",
