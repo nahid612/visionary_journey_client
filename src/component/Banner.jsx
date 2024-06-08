@@ -42,7 +42,7 @@ const Banner = () => {
                   <span className="text-5xl font-bold">PeaceFul Department</span>
                 </h1>
                 <p className="mb-5">
-                  Booking your dream tourist place. We alwayes
+                  Booking your dream tourist place. Weather are looking for adventure trips. You trust us, we are handling easily every single one issue. So you can travel peace of mind.
                 </p>
                 <button className="btn btn-primary">Explore</button>
               </div>
@@ -64,9 +64,7 @@ const Banner = () => {
                   <span className="text-5xl font-bold">PeaceFul Department</span>
                 </h1>
                 <p className="mb-5">
-                  Good Service is our passion. No matter what the weather, no
-                  matter what the situation we are in, if we have the right
-                  perspective in life, life will always be beautiful!
+                Explore the best in travel services with our premier travel agency. Our all guides agent knowledge to high. Our guide always help in your jourey. We have lots of client happy review. All client happy to our servce.
                 </p>
                 <button className="btn btn-primary">Explore</button>
               </div>
@@ -88,9 +86,7 @@ const Banner = () => {
                   <span className="text-5xl font-bold">PeaceFul Department</span>
                 </h1>
                 <p className="mb-5">
-                  Good Service is our passion. No matter what the weather, no
-                  matter what the situation we are in, if we have the right
-                  perspective in life, life will always be beautiful!
+                Explore the best in travel services with our premier travel agency. Our all guides agent knowledge to high. Our guide always help in your jourey. We have lots of client happy review. All client happy to our servce.
                 </p>
                 <button className="btn btn-primary">Explore</button>
               </div>
