@@ -12,7 +12,7 @@ import AuthProvider from "./AuthProvider/AuthProvider";
 import Register from "./component/Register";
 import Login from "./component/Login";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
-
+import UpdatePlace from "./pages/AllTouristSpot/UpdatePlace";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -43,7 +43,14 @@ const router = createBrowserRouter([
             <MyAddList />
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/myAddList"),
+      },
+      {
+        path: "/updatePlace/:id",
+        element: (
+          <PrivateRoute>
+            <UpdatePlace />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/register",

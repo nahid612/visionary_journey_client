@@ -1,12 +1,27 @@
-import Swal from "sweetalert2";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import useAuth from "../../Hook/useAuth";
+import Swal from "sweetalert2";
 
-const AddTouristSpot = () => {
+const UpdatePlace = () => {
+    const {id} =useParams()
+    console.log(id)
+    const [place, setPlace] = useState({})
 
-  const {user } = useAuth();
-  
-  const handleAddTouristSpot = (e) =>{
-    e.preventDefault()
+    useEffect(() =>{
+        fetch(`http://localhost:5000/singlePlace/${id}`)
+        .then(res => res.json())
+        .then(data =>{
+            setPlace(data)
+            console.log(data)
+        })
+    },[id])
+
+    const {user } = useAuth();
+
+    // update
+    const handleUpdate = (e) =>{
+        e.preventDefault()
     const image = e.target.image.value
     const touristSpot = e.target.touristSpot.value
     const countryName = e.target.countryName.value
@@ -21,39 +36,38 @@ const AddTouristSpot = () => {
     const info = {image,touristSpot,countryName, location,description, cost, season,travelTime, visitor, email}
     console.log(info)
 
-    // send to the server
-    fetch('http://localhost:5000/addTouristSpot',{
-      method: 'POST',
-      headers:{
-        'content-type': 'application/json'
-        },
-      body: JSON.stringify(info)
-    })
-      .then(res => res.json())
-      .then(data =>{
-        console.log(data)
-        if(data.insertedId){
-          Swal.fire({
-            title: 'Success!',
-            text: 'Place add successfully',
-            icon: 'success',
-            confirmButtonText: 'Ok'
-          })
-        }
+     // send to the server
+     fetch(`http://localhost:5000/updatePlace/${id}`,{
+        method: 'PUT',
+        headers:{
+          'content-type': 'application/json'
+          },
+        body: JSON.stringify(info)
       })
+        .then(res => res.json())
+        .then(data =>{
+          console.log(data)
+          if(data.modifiedCount){
+            Swal.fire({
+              title: 'Success!',
+              text: 'Place Update successfully',
+              icon: 'success',
+              confirmButtonText: 'Ok'
+            })
+          }
+        })
+  
+      console.log(info)
 
-    console.log(info)
-  }
-
-  return (
-    <div>
-      <div className=" mt-10 rounded-lg bg-gray-100">
+    }
+    return (
+        <div className=" my-10 rounded-lg bg-gray-100">
         <div className="text-center ">
-          <h1 className="text-5xl my-3 p-5 font-bold">Add Tourist Spot!</h1>
+          <h1 className="text-5xl my-3 font-bold">Update to your Tourist Spot!</h1>
         </div>
         <div className=" w-full shadow-2xl">
-          <form onSubmit={handleAddTouristSpot}>
-            <div className=" lg:grid lg:grid-cols-2 gap-5 p-5">
+          <form onSubmit={handleUpdate}>
+            <div className=" p-5 lg:grid lg:grid-cols-2 gap-5">
               {/* --------------- */}
               <div className="form-control">
                 <label className="label">
@@ -65,6 +79,7 @@ const AddTouristSpot = () => {
                   placeholder="image url"
                   className="input input-bordered w-full"
                   required
+                  defaultValue={place.image}
                 />
               </div>
               {/* ---------------- */}
@@ -78,6 +93,7 @@ const AddTouristSpot = () => {
                   placeholder="tourist spot name"
                   className="input input-bordered w-full"
                   required
+                  defaultValue={place.touristSpot}
                 />
               </div>
               {/* ---------------- */}
@@ -91,6 +107,7 @@ const AddTouristSpot = () => {
                   placeholder="country name"
                   className="input input-bordered w-full"
                   required
+                  defaultValue={place.countryName}
                 />
               </div>
               {/* ---------------- */}
@@ -104,6 +121,7 @@ const AddTouristSpot = () => {
                   placeholder="location"
                   className="input input-bordered w-full"
                   required
+                  defaultValue={place.location}
                 />
               </div>
               {/* ---------------- */}
@@ -117,6 +135,7 @@ const AddTouristSpot = () => {
                   placeholder="write a short description"
                   className="input input-bordered w-full"
                   required
+                  defaultValue={place.description}
                 />
               </div>
               {/* ---------------- */}
@@ -130,6 +149,7 @@ const AddTouristSpot = () => {
                   placeholder="average cost"
                   className="input input-bordered w-full"
                   required
+                  defaultValue={place.description}
                 />
               </div>
               {/* ---------------- */}
@@ -143,6 +163,7 @@ const AddTouristSpot = () => {
                   placeholder="seasonality"
                   className="input input-bordered w-full"
                   required
+                  defaultValue={place.season}
                 />
               </div>
               {/* ---------------- */}
@@ -156,6 +177,7 @@ const AddTouristSpot = () => {
                   placeholder="travel day"
                   className="input input-bordered w-full"
                   required
+                  defaultValue={place.travelTime}
                 />
               </div>
               {/* ---------------- */}
@@ -169,17 +191,17 @@ const AddTouristSpot = () => {
                   placeholder="total visitors per year"
                   className="input input-bordered w-full"
                   required
+                  defaultValue={place.visitor}
                 />
               </div>
             </div>
-            <div className="form-control mt-6 p-5">
+            <div className="form-control pb-5 px-5 mt-6">
                 <button className="btn btn-primary">Submit</button>
               </div>
           </form>
         </div>
       </div>
-    </div>
-  );
+    );
 };
 
-export default AddTouristSpot;
+export default UpdatePlace;
