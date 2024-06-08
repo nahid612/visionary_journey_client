@@ -22,7 +22,7 @@ const AddTouristSpot = () => {
     console.log(info)
 
     // send to the server
-    fetch('http://localhost:5000/addTouristSpot',{
+    fetch('https://nahid-seven.vercel.app/addTouristSpot',{
       method: 'POST',
       headers:{
         'content-type': 'application/json'
