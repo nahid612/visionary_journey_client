@@ -42,9 +42,7 @@ const Banner = () => {
                   <span className="text-5xl font-bold">PeaceFul Department</span>
                 </h1>
                 <p className="mb-5">
-                  Good Service is our passion. No matter what the weather, no
-                  matter what the situation we are in, if we have the right
-                  perspective in life, life will always be beautiful!
+                  Booking your dream tourist place. We alwayes
                 </p>
                 <button className="btn btn-primary">Explore</button>
               </div>
